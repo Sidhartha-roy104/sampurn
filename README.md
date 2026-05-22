@@ -22,13 +22,13 @@ Instead of overwhelming users with complicated productivity systems, Sampūrṇ 
 
 ## Main Experience
 
-![Sampurn UI](./assets/sampurn-main.jpeg)
+![Sampurn UI](/assets/sampurn-main.jpeg)
 
 ---
 
 ## 📝 Pocket Notes — New Feature Launch
 
-![Pocket Notes](./assets/pocket-notes-launch.png)
+![Pocket Notes](/assets/pocket-notes-launch.jpeg)
 
 ---
 
