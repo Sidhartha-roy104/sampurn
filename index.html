@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Strikethrough — Add it. Strike it. Track it. Done."/>
+  <meta name="theme-color" content="#f7f6f2"/>
+  <title>Sampūrṇ -"Fill your day, feel complete."</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫙</text></svg>"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/css/main.css"/>
+  <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+
+<!-- AUTH SCREEN -->
+<div id="auth-screen" class="auth-screen">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <div class="auth-jar">🫙</div>
+      <h1 class="auth-title">Sampūrṇ</h1>
+      <p class="auth-sub">"Fill your day, feel complete."</p>
+    </div>
+    <p class="auth-desc">Sign in to save your habits across all devices.</p>
+    <p class="auth-error" id="auth-err"></p>
+    <button class="google-btn" id="google-btn" onclick="Auth.googleSignIn()">
+      <svg width="20" height="20" viewBox="0 0 48 48">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      Continue with Google
+    </button>
+    <p class="auth-note">No password needed. One tap and you're in.</p>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app-screen" class="hidden">
+<div class="app">
+
+  <header class="header">
+    <div>
+      <!-- <h2><b>Sampūrṇ</b></h2> -->
+      <h2 style="font-family: 'DM Serif Display', serif;"><b>Sampūrṇ</b></h2>
+       <!-- <h2 style="font-family:'DM Serif Display', Georgia, serif; font-size:28px; font-weight:200; color:var(--t1); line-height:1; letter-spacing:-0.10px;">
+  <b>Sampūrṇ</b>
+</h2> -->
+<!-- <h2 style="font-family:'DM Serif Display', Georgia, serif; font-size:28px; font-weight:700; color:var(--t1); line-height:1; letter-spacing:-0.10px;">
+  Sampūrṇ
+</h2> -->
+      <p class="greeting" id="greeting">Good morning</p>
+    </div>
+    <div class="header-right">
+      <div class="streak" id="streak-wrap">
+        <span class="streak-fire">🔥</span>
+        <div>
+          <div class="streak-num" id="streak-num">0</div>
+          <div class="streak-lbl">Streak</div>
+        </div>
+      </div>
+      <button class="icon-btn" onclick="Auth.logout()" title="Sign out">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="clock-bar">
+    <span id="live-date" class="live-date"></span>
+    <span id="live-time" class="live-time"></span>
+  </div>
+
+  <div class="motivator">
+    <span>✨</span>
+    <span id="motivator-text">Every small step keeps your rhythm.</span>
+  </div>
+
+  <section class="hero">
+    <div class="jar-wrap">
+      <svg width="82" height="112" viewBox="0 0 82 112" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="jclip">
+            <path d="M15,20 L11,24 L11,96 Q11,104 21,104 L61,104 Q71,104 71,96 L71,24 L67,20 Z"/>
+          </clipPath>
+        </defs>
+        <rect class="jar-bg"      x="11" y="20" width="60" height="84" rx="8"/>
+        <rect id="jar-fill"       x="11" y="104" width="60" height="0" clip-path="url(#jclip)"/>
+        <path class="jar-outline" d="M15,20 L11,24 L11,96 Q11,104 21,104 L61,104 Q71,104 71,96 L71,24 L67,20 Z" fill="none"/>
+        <rect class="jar-lid"     x="23" y="11" width="36" height="11" rx="3" fill="none"/>
+        <text id="jar-txt" class="jar-txt" x="41" y="66" text-anchor="middle">0%</text>
+      </svg>
+    </div>
+    <button class="notes-fab" id="notes-open">
+      📝
+    </button>
+    <div class="hero-info">
+      <div class="hero-pct" id="hero-pct">0%</div>
+      <div class="hero-sub">today's progress</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hs-val" id="h-done">0</span>
+          <span class="hs-lbl">done</span>
+        </div>
+        <div class="hero-stat divider">
+          <span class="hs-val" id="h-total">0</span>
+          <span class="hs-lbl">tasks</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab active" id="tab-today"    onclick="App.tab('today')">Today</button>
+    <button class="tab"        id="tab-calendar" onclick="App.tab('calendar')">Calendar</button>
+    <button class="tab"        id="tab-history"  onclick="App.tab('history')">History</button>
+  </nav>
+
+  <section class="view active" id="v-today">
+    <div class="card">
+      <div class="card-hdr">
+        <h2 class="card-title">Today's Tasks</h2>
+        <button class="sec-btn" id="add-toggle">+ Add</button>
+      </div>
+      <div class="loading-row" id="tasks-loading">
+        <div class="spinner"></div><span>Loading Tasks…</span>
+      </div>
+      <div id="task-list" role="list" style="display:none"></div>
+      <form class="add-form hidden" id="add-form" onsubmit="return false">
+        <div class="add-row">
+          <span class="add-emoji" id="add-emoji">⭐</span>
+          <input class="add-input" id="add-input" type="text" placeholder="Add task here…" maxlength="60" autocomplete="off"/>
+        </div>
+        <button class="pri-btn" id="add-ok" type="submit">Add</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="view hidden" id="v-calendar">
+    <div class="card">
+      <div class="cal-hdr">
+        <button class="cal-nav" id="cal-prev">‹</button>
+        <div class="cal-title-wrap">
+          <div class="cal-month" id="cal-m">March</div>
+          <div class="cal-year"  id="cal-y">2026</div>
+        </div>
+        <button class="cal-nav" id="cal-next">›</button>
+      </div>
+      <div class="weekdays">
+        <span>Sun</span><span>Mon</span><span>Tue</span>
+        <span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="days-grid" id="days-grid"></div>
+      <div class="cal-legend">
+        <span class="leg"><span class="leg-dot" style="background:#FAC775"></span>&lt;50%</span>
+        <span class="leg"><span class="leg-dot" style="background:#5DCAA5"></span>50–75%</span>
+        <span class="leg"><span class="leg-dot" style="background:#1D9E75"></span>75–99%</span>
+        <span class="leg"><span class="leg-dot" style="background:#7F77DD"></span>100%</span>
+      </div>
+      <div class="day-detail hidden" id="day-detail">
+        <div class="dd-header">
+          <div>
+            <div class="dd-title" id="dd-title">—</div>
+          </div>
+          <svg id="dd-jar" width="48" height="66" viewBox="0 0 48 66" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="ddj-clip">
+                <path d="M9,14 L7,16 L7,57 Q7,62 13,62 L35,62 Q41,62 41,57 L41,16 L39,14 Z"/>
+              </clipPath>
+            </defs>
+            <rect class="jar-bg" x="7" y="14" width="34" height="48" rx="5"/>
+            <rect class="ddj-fill" x="7" y="62" width="34" height="0" clip-path="url(#ddj-clip)"/>
+            <path class="jar-outline" d="M9,14 L7,16 L7,57 Q7,62 13,62 L35,62 Q41,62 41,57 L41,16 L39,14 Z" fill="none"/>
+            <rect class="jar-lid" x="14" y="8" width="20" height="7" rx="2" fill="none"/>
+            <text class="ddj-txt jar-txt" x="24" y="40" text-anchor="middle" font-size="10">0%</text>
+          </svg>
+        </div>
+        <div id="dd-tasks"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view hidden" id="v-history">
+    <div class="card">
+      <h2 class="card-title" style="margin-bottom:14px">Past days</h2>
+      <div class="loading-row hidden" id="hist-loading">
+        <div class="spinner"></div><span>Loading history…</span>
+      </div>
+      <div id="hist-list"></div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<!-- App scripts -->
+<script src="src/js/config.js"></script>
+<script src="src/js/utils.js"></script>
+<script src="src/js/db.js"></script>
+<script src="src/js/auth.js"></script>
+<script src="src/js/jar.js"></script>
+<script src="src/js/clock.js"></script>
+<script src="src/js/tasks.js"></script>
+<script src="src/js/calendar.js"></script>
+<script src="src/js/history.js"></script>
+<script src="src/js/notes.js"></script>
+<script src="src/js/app.js"></script>
+</script>
+
+<!-- NOTES MODAL -->
+
+<div id="notes-overlay">
+
+  <div id="notes-modal">
+
+    <div class="notes-top">
+
+      <h3>Pocket Notes</h3>
+
+      <div class="notes-top-right">
+        <button id="notes-search-btn" class="notes-icon-btn">🔍</button>
+        <button id="notes-close" class="notes-icon-btn">
+          ✕
+        </button>
+      </div>
+
+    </div>
+
+    <div id="notes-search-input-wrap" class="notes-search-wrap hidden">
+      <input 
+        id="notes-search-input" 
+        type="text" 
+        placeholder="Search past notes..."
+        class="notes-search-input"
+      />
+    </div>
+
+    <div id="notes-editor-wrap" class="notes-editor-wrap">
+      <textarea
+        id="notes-input"
+        placeholder="Write anything on your mind...&#10;Quick thoughts, plans, quotes...&#10;Save it before you forget it."
+      ></textarea>
+    </div>
+
+    <div id="notes-results-wrap" class="notes-results-wrap hidden">
+      <div id="notes-results" class="notes-results"></div>
+    </div>
+
+    <p class="notes-save">
+      Auto-saved locally ✨
+    </p>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+.vscode/
+node_modules/
+.env
+.DS_Store
+*.log
+start.bat
+start.sh
