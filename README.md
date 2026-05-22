@@ -1,50 +1,187 @@
-# 🫙 Strikethrough — Setup Guide
+# 🫙 Sampūrṇ  
+### *Fill your day, feel complete.*
 
-## What changed
-Auth is now **Google Sign-In** — no passwords, no forms. One tap and users are in.
-Their Google account name and photo are used automatically.
+Sampūrṇ is a minimal productivity web application designed to make consistency feel simple, visual, and satisfying.
 
----
-
-## Setup steps
-
-### 1. Firebase project & Firestore
-*(Same as before — skip if already done)*
-- [console.firebase.google.com](https://console.firebase.google.com) → your project
-- Build → Firestore Database → Create database → Test mode
-
-### 2. Enable Google Sign-In ← NEW STEP
-1. Firebase Console → **Build → Authentication**
-2. Click **"Get started"**
-3. Click **"Google"** under Sign-in providers
-4. Toggle it **Enable**
-5. Enter your **Project support email** (your Gmail)
-6. Click **Save**
-
-### 3. Add your domain to Authorised domains ← IMPORTANT
-1. Still in Authentication → **Settings** tab
-2. Scroll to **Authorised domains**
-3. Click **Add domain**
-4. Add your Netlify URL e.g. `amazing-name-123.netlify.app`
-5. Click **Add**
-
-*(localhost is already there for local testing)*
-
-### 4. Paste Firebase config
-Open `src/js/config.js` → paste your firebaseConfig values (same as before)
-
-### 5. Update Firestore Rules
-Firebase Console → Firestore → **Rules** tab
-Replace everything with the contents of `firestore.rules` → **Publish**
-
-### 6. Deploy to Netlify
-Drag the `kotsu3/` folder onto [netlify.com](https://netlify.com) → done ✅
+Instead of overwhelming users with complicated productivity systems, Sampūrṇ focuses on a calm, distraction-free experience where users can:
+- add daily tasks quickly
+- track progress visually through a filling jar
+- maintain streaks
+- store random thoughts using Pocket Notes
+- review progress using Calendar & History
 
 ---
 
-## How it works now
-- User taps **Continue with Google** → Google popup appears
-- They pick their Google account → instantly logged in
-- Their Firebase UID is used as `userId` on all habits
-- Logging out and back in restores all their data automatically
-- Works across any device with the same Google account
+# ✨ Live Demo
+
+🔗 https://sampurn1.netlify.app/
+
+---
+
+# 🖼️ Preview
+
+## Main Experience
+
+![Sampurn UI](./assets/sampurn-main.jpeg)
+
+---
+
+## 📝 Pocket Notes — New Feature Launch
+
+![Pocket Notes](./assets/pocket-notes-launch.png)
+
+---
+
+# 🌟 Features
+
+## ✅ Daily Task Tracking
+- Add tasks instantly
+- Smart emoji matching
+- One-click completion
+- Smooth minimal interactions
+
+---
+
+## 🫙 Visual Jar Progress
+The jar fills as tasks are completed, creating a small dopamine boost and encouraging consistency through visual satisfaction.
+
+---
+
+## 🔥 Streak System
+Maintain daily streaks and stay consistent over time.
+
+---
+
+## 📅 Calendar View
+Track daily productivity using color-coded calendar indicators.
+
+---
+
+## 🕘 History Tracking
+Review previous days and monitor progress over time.
+
+---
+
+# 📝 Pocket Notes
+
+Pocket Notes is a floating minimal notepad built directly into Sampūrṇ.
+
+It allows users to:
+- save random thoughts
+- capture ideas instantly
+- write quotes & plans
+- maintain brain dumps
+- store temporary thoughts
+
+---
+
+## ✨ Pocket Notes Features
+
+- Floating popup notepad
+- Glass blur background
+- Auto-save while typing
+- Day-wise note storage
+- Instant search functionality
+- Timestamp-based memory feel
+- Minimal distraction-free design
+
+---
+
+## 🔍 Smart Search
+
+Users can instantly search previously saved notes.
+
+Search results include:
+- note content
+- saved date
+- timestamps
+
+This creates a more personal “memory-like” experience instead of plain notes storage.
+
+---
+
+# 🎯 Design Philosophy
+
+Sampūrṇ is not built to be another overloaded productivity tool.
+
+The goal is to create:
+
+> “A calm personal productivity space that feels satisfying to use every day.”
+
+The entire experience focuses on:
+- minimalism
+- reduced friction
+- visual motivation
+- smooth UX
+- emotional satisfaction
+
+---
+
+# 🛠️ Tech Stack
+
+- HTML
+- CSS
+- JavaScript
+- Firebase Authentication
+- Firestore Database
+- Netlify
+
+---
+
+# 🔐 Security
+
+- Firebase Authentication enabled
+- Firestore protected with security rules
+- API key restricted to allowed domains
+
+---
+
+# 🚀 Upcoming Features
+
+- 🎤 Voice Input for tasks & notes
+- 🌙 Daily Reflection
+- 📊 Weekly Productivity Recap
+- ⏳ Focus Sessions
+- 🧠 AI-based productivity insights
+
+---
+
+# 📱 PWA Support
+
+Sampūrṇ can be installed as a Progressive Web App (PWA).
+
+You can:
+- Add it to your Home Screen
+- Use it like a native app
+- Access it quickly anytime
+
+---
+
+# 💡 Why “Sampūrṇ”?
+
+“Sampūrṇ” means:
+> *Complete / Whole*
+
+The idea behind the app is simple:
+small consistent actions slowly make your day feel complete.
+
+---
+
+# 👨‍💻 Developer
+
+Built with ❤️ by **Sidhartha Ray**
+
+---
+
+# ⭐ Support
+
+If you liked the project:
+- Give it a ⭐ on GitHub
+- Share feedback
+- Connect on LinkedIn
+
+---
+
+# 📜 License
+
+This project is licensed under the MIT License.
